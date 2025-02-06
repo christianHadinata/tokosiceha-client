@@ -24,55 +24,67 @@ export default function page() {
         </div>
       </div>
       <div className="flex h-screen w-1/2 flex-col items-center justify-center">
-        <h1 className="pb-10 text-5xl font-semibold">Register</h1>
-        <form className="flex w-2/5 flex-col gap-y-5">
-          <Input
-            label="Username"
-            type="text"
-            variant="underlined"
-            size="lg"
-            isClearable
-          />
-          <Input
-            label="Email"
-            type="email"
-            variant="underlined"
-            size="lg"
-            isClearable
-          />
-          <Input
-            label="Password"
-            type={isVisible ? "text" : "password"}
-            variant="underlined"
-            size="lg"
-            endContent={
-              <button
-                aria-label="toggle password visibility"
-                className="focus:outline-none"
-                type="button"
-                onClick={toggleVisibility}
-              >
-                {isVisible ? (
-                  <EyeFilledIcon className="pointer-events-none text-2xl text-default-400" />
-                ) : (
-                  <EyeSlashFilledIcon className="pointer-events-none text-2xl text-default-400" />
-                )}
-              </button>
-            }
-          />
-          <Button className="mt-5 bg-sky-400 font-medium text-white">
-            Register
-          </Button>
-          <h3 className="text-center">
-            Already have an account?{" "}
-            <Link
-              href={"/login"}
-              className="font-medium text-sky-400 hover:text-sky-300"
-            >
-              Login
-            </Link>
-          </h3>
-        </form>
+        <div className="w-1/2">
+          <Link
+            href={"/"}
+            className="text-xl font-normal text-sky-400 hover:text-sky-300"
+          >
+            {"< "}Back to home
+          </Link>
+          <div className="p-10 shadow-2xl shadow-slate-200">
+            <h1 className="pb-10 text-center text-5xl font-semibold">
+              Register
+            </h1>
+            <form className="flex flex-col gap-y-5">
+              <Input
+                label="Username"
+                type="text"
+                variant="underlined"
+                size="lg"
+                isClearable
+              />
+              <Input
+                label="Email"
+                type="email"
+                variant="underlined"
+                size="lg"
+                isClearable
+              />
+              <Input
+                label="Password"
+                type={isVisible ? "text" : "password"}
+                variant="underlined"
+                size="lg"
+                endContent={
+                  <button
+                    aria-label="toggle password visibility"
+                    className="focus:outline-none"
+                    type="button"
+                    onClick={toggleVisibility}
+                  >
+                    {isVisible ? (
+                      <EyeFilledIcon className="pointer-events-none text-2xl text-default-400" />
+                    ) : (
+                      <EyeSlashFilledIcon className="pointer-events-none text-2xl text-default-400" />
+                    )}
+                  </button>
+                }
+              />
+              <Button className="mt-5 bg-sky-400 font-medium text-white">
+                Register
+              </Button>
+              <h3 className="text-center">
+                Already have an account?{" "}
+                <Link
+                  href={"/login"}
+                  className="font-medium text-sky-400 hover:text-sky-300"
+                >
+                  Login
+                </Link>
+              </h3>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );
