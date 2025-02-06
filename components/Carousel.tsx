@@ -21,6 +21,15 @@ export default function Carousel() {
   const swiperRef = useRef<SwiperType>();
   const [showNavBtn, setShowNavBtn] = useState(false);
 
+  // generate path images to dynamicaly show in SwiperSlide
+  // if there are more images, then just change the length
+  // the format will be [/carousel/1.jpg, /carousel/2.jpg, ...]
+  // IMPORTANT: Name the image with 1.jpg, 2.jpg, ...
+  const pathImages = Array.from(
+    { length: 5 },
+    (_, i) => `/carousel/${i + 1}.jpg`,
+  );
+
   return (
     <div
       className="group relative mx-auto w-full max-w-[1200px]"
@@ -35,6 +44,7 @@ export default function Carousel() {
       >
         &lt;
       </button>
+
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         autoplay={{ delay: 3000 }}
@@ -47,56 +57,18 @@ export default function Carousel() {
         }}
         className="rounded-xl"
       >
-        <SwiperSlide>
-          <div className="relative h-[300px] w-full">
-            <Image
-              src="/carousel/1.jpg" // Image should be inside "public/carousel/1.jpg"
-              alt="Slide 1"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="relative h-[300px] w-full">
-            <Image
-              src="/carousel/2.jpg"
-              alt="Slide 2"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="relative h-[300px] w-full">
-            <Image
-              src="/carousel/3.jpg"
-              alt="Slide 3"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="relative h-[300px] w-full">
-            <Image
-              src="/carousel/4.jpg"
-              alt="Slide 4"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="relative h-[300px] w-full">
-            <Image
-              src="/carousel/5.jpg"
-              alt="Slide 5"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </SwiperSlide>
+        {pathImages.map((pathImage, i) => (
+          <SwiperSlide key={i}>
+            <div className="relative h-[300px] w-full">
+              <Image
+                src={pathImage}
+                alt="Slide 1"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
       <button
         onClick={() => swiperRef.current?.slideNext()}
