@@ -1,5 +1,6 @@
 import { Button } from "@heroui/react";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Navbar = () => {
   return (
@@ -21,6 +22,8 @@ export const Navbar = () => {
         </div>
         <div className="flex gap-x-6">
           <Button
+            as={Link}
+            href="/register"
             variant="bordered"
             className="border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-white"
           >
