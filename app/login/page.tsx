@@ -10,6 +10,8 @@ import Image from "next/image";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { AxiosError } from "axios";
+import { jwtDecode } from "jwt-decode";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function page() {
   const [email, setEmail] = useState<string>("");
@@ -17,6 +19,15 @@ export default function page() {
   const [isVisible, setIsVisible] = useState(false);
 
   const router = useRouter();
+  const { setUser } = useAuth();
+
+  interface UserPayload {
+    user_id: string;
+    user_email: string;
+    user_name: string;
+    user_role: string;
+    user_phone: string | null;
+  }
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
@@ -24,23 +35,26 @@ export default function page() {
     e.preventDefault();
 
     if (!email || !password) {
-      toast.error("All Field Must Be Specified!");
+      toast.error("All field must be specified!");
     } else {
-      // try {
-      //   const { data } = await AxiosInstance.post(
-      //     `http://localhost:5000/api/v1/users/register`,
-      //     {
-      //       user_email: email,
-      //       user_password: password,
-      //     },
-      //   );
-      //   if (data.user_id) {
-      //     router.push("/login?registered=true");
-      //   }
-      // } catch (error: any) {
-      //   const msg = error.response?.data?.message + "!";
-      //   toast.error(msg);
-      // }
+      try {
+        const { data } = await AxiosInstance.post(
+          `http://localhost:5000/api/v1/users/login`,
+          {
+            user_email: email,
+            user_password: password,
+          },
+        );
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          const decodedUser: UserPayload = jwtDecode(data.token);
+          setUser(decodedUser);
+          router.push("/");
+        }
+      } catch (error: any) {
+        const msg = error.response?.data?.message + "!";
+        toast.error(msg);
+      }
     }
   };
   return (
