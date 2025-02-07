@@ -29,7 +29,9 @@ export const Navbar = () => {
           >
             Register
           </Button>
-          <Button className="bg-sky-400 text-white">Login</Button>
+          <Button as={Link} href="/login" className="bg-sky-400 text-white">
+            Login
+          </Button>
         </div>
       </div>
     </nav>
