@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { HeroUIProvider } from "@heroui/react";
+import { AuthProvider } from "../contexts/AuthContext";
 import NavbarWrapper from "@/components/NavbarWrapper";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -26,11 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} `}>
-        <ToastContainer position="top-center" />
-        <HeroUIProvider>
-          <NavbarWrapper />
-          {children}
-        </HeroUIProvider>
+        <AuthProvider>
+          <ToastContainer position="top-center" />
+          <HeroUIProvider>
+            <NavbarWrapper />
+            {children}
+          </HeroUIProvider>
+        </AuthProvider>
       </body>
     </html>
   );
