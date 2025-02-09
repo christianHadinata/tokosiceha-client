@@ -3,7 +3,7 @@ import Carousel from "@/components/Carousel";
 
 export default function Home() {
   return (
-    <div>
+    <div className="mt-2">
       <Carousel />
     </div>
   );

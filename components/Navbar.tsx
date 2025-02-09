@@ -12,15 +12,16 @@ export const Navbar = () => {
           <h2 className="cursor-pointer text-3xl text-sky-400">tokosiceha</h2>
           <div className="flex w-2/3 rounded-xl border-2 border-gray-300 px-5 py-2">
             <Image
-              src={"/icon-search.png"}
+              src={"/icon/search-1.png"}
               width={20}
               height={10}
-              alt="icon-search"
+              alt="search"
+              className="contrast-0"
             ></Image>
             <input
               type="text"
               placeholder="Cari di Tokosiceha"
-              className="w-full px-5 text-sm outline-none"
+              className="w-full px-5 text-sm placeholder-gray-600 outline-none"
             />
           </div>
 
@@ -48,33 +49,49 @@ export const Navbar = () => {
   return (
     <nav className="fixed z-50 w-full border-b-2 border-gray-200 bg-white p-4 shadow-sm">
       <div className="flex items-center justify-between px-8">
-        <h2 className="cursor-pointer text-3xl text-sky-400">tokosiceha</h2>
+        <Link href={"/"} className="cursor-pointer text-3xl text-sky-400">
+          tokosiceha
+        </Link>
         <div className="flex w-2/3 rounded-xl border-2 border-gray-300 px-5 py-2">
           <Image
-            src={"/icon-search.png"}
+            src={"/icon/search-1.png"}
             width={20}
             height={10}
-            alt="icon-search"
+            alt="search"
+            className="contrast-0"
           ></Image>
           <input
             type="text"
             placeholder="Cari di Tokosiceha"
-            className="w-full px-5 text-sm outline-none"
+            className="w-full px-5 text-sm placeholder-gray-600 outline-none"
           />
         </div>
         {user ? (
-          <div className="flex gap-x-6">
-            <div className="bg-red-50">
+          <div className="flex items-center gap-x-6">
+            <Link
+              href={"/cart"}
+              className="rounded-md p-2 hover:bg-gray-100 focus:bg-gray-200"
+            >
               <Image
                 src={"/icon/cart-1.png"}
                 width={25}
                 height={25}
                 alt="cart"
+                className="contrast-[.25]"
               ></Image>
-            </div>
-            <Button as={Link} href="/login" className="bg-sky-400 text-white">
-              Profile
-            </Button>
+            </Link>
+            <Link
+              href={"/profile"}
+              className="rounded-md p-2 hover:bg-gray-100 focus:bg-gray-200"
+            >
+              <Image
+                src={"/icon/profile-1.png"}
+                width={25}
+                height={25}
+                alt="cart"
+                className="contrast-[.25]"
+              ></Image>
+            </Link>
           </div>
         ) : (
           <div className="flex gap-x-6">
