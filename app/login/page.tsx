@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input } from "@heroui/input";
 import { Button, ButtonGroup } from "@heroui/button";
 import Link from "next/link";
@@ -8,7 +8,7 @@ import { EyeFilledIcon } from "@/components/EyeFilledIcon";
 import { AxiosInstance } from "@/utils/axiosInstance";
 import Image from "next/image";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { AxiosError } from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useAuth } from "@/contexts/AuthContext";
@@ -18,8 +18,22 @@ export default function page() {
   const [password, setPassword] = useState<string>("");
   const [isVisible, setIsVisible] = useState(false);
 
+  const searchParams = useSearchParams();
   const router = useRouter();
   const { setUser } = useAuth();
+
+  useEffect(() => {
+    const registered = searchParams.get("registered");
+
+    if (registered) {
+      toast.success("Success! Account created.", {
+        toastId: "register-success", // Unique identifier to prevent duplicates (prevent double toast)
+      });
+
+      // Remove query parameter
+      router.replace("/login");
+    }
+  }, [searchParams, router]);
 
   interface UserPayload {
     user_id: string;

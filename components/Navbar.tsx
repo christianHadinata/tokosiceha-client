@@ -64,14 +64,14 @@ export const Navbar = () => {
         </div>
         {user ? (
           <div className="flex gap-x-6">
-            <Button
-              as={Link}
-              href="/register"
-              variant="bordered"
-              className="border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-white"
-            >
-              Cart
-            </Button>
+            <div className="bg-red-50">
+              <Image
+                src={"/icon/cart-1.png"}
+                width={25}
+                height={25}
+                alt="cart"
+              ></Image>
+            </div>
             <Button as={Link} href="/login" className="bg-sky-400 text-white">
               Profile
             </Button>
