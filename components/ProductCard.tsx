@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export type ProductTypes = {
+type ProductTypes = {
   product_id: number;
   product_name: string;
   product_price: number;
@@ -17,8 +17,8 @@ export type ProductTypes = {
 export default function ProductCard(props: ProductTypes) {
   return (
     <Link
-      href={"/"}
-      className="flex h-[350px] w-[188px] cursor-pointer flex-col rounded-xl shadow-md shadow-gray-200 transition-all hover:scale-105"
+      href={`/product-details/${props.product_id}`}
+      className="flex h-[350px] w-[186px] cursor-pointer flex-col rounded-xl shadow-md shadow-gray-200 transition-all hover:scale-105"
     >
       <img
         src={`http://localhost:5000/${props.product_featured_image_url}`}
