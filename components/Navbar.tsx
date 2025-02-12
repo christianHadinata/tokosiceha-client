@@ -2,9 +2,21 @@ import { useAuth } from "../contexts/AuthContext";
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export const Navbar = () => {
   const { user, loading } = useAuth();
+  const router = useRouter();
+
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleEnterSearchQuery = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
   if (loading) {
     return (
       <nav className="fixed z-50 w-full border-b-2 border-gray-200 bg-white p-4 shadow-sm">
@@ -64,6 +76,8 @@ export const Navbar = () => {
             type="text"
             placeholder="Cari di Tokosiceha"
             className="w-full px-5 text-sm placeholder-gray-600 outline-none"
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={handleEnterSearchQuery}
           />
         </div>
         {user ? (

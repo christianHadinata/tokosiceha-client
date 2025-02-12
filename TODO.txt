@@ -1,0 +1,13 @@
+1. 
+In product details page, add rate and review functionality, the idea is just showing 2 review and then there will be a link text like "Show all review", that on click, it will open a drawer on right side, that showing all review
+References logic: https://www.zalora.co.id/p/hm-regular-fit-hoodie-brown-4655193
+Drawer HeroUI: https://www.heroui.com/docs/components/drawer
+
+2.
+Add login logic functionality, so only logged in user can use cart functionality and payments in the future
+
+3.
+Add cart UI and functionality (backend for cart is done created (without auth))
+
+4.
+Add auth functionality to all logic
