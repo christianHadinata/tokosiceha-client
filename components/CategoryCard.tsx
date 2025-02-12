@@ -10,7 +10,7 @@ type CategoryTypes = {
 export default function CategoryCard(props: CategoryTypes) {
   return (
     <Link
-      href={"/"}
+      href={`/category/${props.category_id}`}
       className="group relative h-[250px] w-[186px] cursor-pointer rounded-xl transition-all hover:scale-105"
     >
       <img
