@@ -75,7 +75,7 @@ export default function page({ params }: { params: ProductTypes }) {
           </BreadcrumbItem>
           <BreadcrumbItem
             className="text-sky-400"
-            href={`/search?q=${product?.category_name}`}
+            href={`/category/${product?.category_id}`}
           >
             {product?.category_name}
           </BreadcrumbItem>
