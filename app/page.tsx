@@ -40,7 +40,7 @@ export default function Home() {
       <Carousel />
       {/* Categories */}
       <div className="flex w-full max-w-[1200px] flex-col py-14">
-        <h2 className="text-2xl font-bold capitalize">
+        <h2 className="text-3xl font-semibold capitalize">
           Shop our top categories
         </h2>
         <div className="mt-5 flex flex-wrap gap-4">
@@ -50,7 +50,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex w-full max-w-[1200px] flex-col py-14">
-        <h2 className="text-2xl font-bold capitalize">Featured Products</h2>
+        <h2 className="text-3xl font-semibold capitalize">Featured Products</h2>
         <div className="mt-5 flex flex-wrap gap-4">
           {products.map((product, index) => (
             <ProductCard
